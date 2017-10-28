@@ -9,4 +9,6 @@ section {
     border: 1px dashed #aaa;
     padding: 20px;
 }
-
+input[type=text]{
+    width: 50px;
+}
