@@ -12,3 +12,12 @@ section {
 input[type=text]{
     width: 50px;
 }
+#maze{
+    width: 100%;
+    padding: 20px;
+}
+.tableparent > div{
+    width: 10px;
+    height: 10px;
+    border: 1px dashed black;
+}
