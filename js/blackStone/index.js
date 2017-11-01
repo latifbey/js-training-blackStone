@@ -12,36 +12,35 @@ function main() {
     drawTable(userInput);
 }
 
-function getInputValues() {
-    let satir = +$("#row").val();
-    let kolon = +$("#col").val();
-    let color= $("#renk").val();
-    console.log(satir, kolon,color, 8);
-    return {
-        satir,
-        kolon,
-        color
-    };
+function getRandomNumber(limit) {
+    return Math.floor(Math.random() * limit) + 1;
 }
 
+function drawTable({ color, col, row })  {
+    const xCoordiante = getRandomNumber(row);
+    const yCoordiante = getRandomNumber(col);
 
-function drawTable(satir,kolon,color) {
-    
-   
-        let table = $("<div class='row1'>.</div>").repeat(kolon*satir);
-    console.log(table);
-        
-        let parent = $('<div class="tableparent">').css({
-            'height': '200px',
-            'width': '200px',
-            'background': 'red'
-        });
-        
-        parent.append(table);
-        $("#maze").append(parent);
-        console.log(table, 5);
+    console.log('coordiantes x, y', xCoordiante, yCoordiante);
+    const container = $('<div class="parent">');
+    for (let i = 0; i < row; i++) {
+        const rows = $('<div class="row">');
+        for (let k = 0; k < col; k++) {
+            const areaLength = $('#maze').width() / col;
+            const cell = $('<div class="col">')
+                .css('width', `${areaLength}`)
+                .css('background', `${color}`)
+                .css('border', '1px solid gray')
+                .css('height', `${areaLength}`);
 
+            rows.append(cell);
+        }
+        container.append(rows);
     }
+    // Add all to dom 
+    $('#maze').html(container);
+    // Here we add the black random selected box.
+    $('.parent .row:nth-child(' + xCoordiante + ') .col:nth-child(' + yCoordiante + ')').css('background', 'black')
+        .css('color', 'white')
+        .text(xCoordiante + ',' + yCoordiante);
 
-$("#maze").html('');
 }
