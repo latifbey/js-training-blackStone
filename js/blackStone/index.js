@@ -9,23 +9,27 @@ $("button").on("click", function () {
 
 function main() {
     let userInput = getInputValues();
+    drawTable(userInput);
 }
 
 function getInputValues() {
-    let satir = $("#row").val();
-    let kolon = $("#col").val();
-    console.log(satir, kolon, 8);
+    let satir = +$("#row").val();
+    let kolon = +$("#col").val();
+    let color= $("#renk").val();
+    console.log(satir, kolon,color, 8);
     return {
         satir,
-        kolon
+        kolon,
+        color
     };
 }
 
 
-function tableDraw(userInput) {
-    $("#maze").html('');
-    kolon.forEach(function () {
-        let table = $("<div>.</div>".repeat(parseInt(kolon)));
+function drawTable(satir,kolon,color) {
+    
+   
+        let table = $("<div class='row1'>.</div>").repeat(kolon*satir);
+    console.log(table);
         
         let parent = $('<div class="tableparent">').css({
             'height': '200px',
@@ -37,7 +41,7 @@ function tableDraw(userInput) {
         $("#maze").append(parent);
         console.log(table, 5);
 
-    })
+    }
 
-
+$("#maze").html('');
 }
